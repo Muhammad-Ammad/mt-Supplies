@@ -6,11 +6,51 @@ import product5 from '../../assets/bestSellingproducts/product5.png';
 import SellingCards from './SellingCards';
 const BestSelling = () => {
     const bestSelling = [
-        { imgSrc: product1, price: '£ 7.66', text: 'Brand Name - Product name, its specifications and all other details of it' },
-        { imgSrc: product2, price: '£ 6.66', text: 'Brand Name - Product name, its specifications and all other details of it' },
-        { imgSrc: product3, price: '£ 5.66', text: 'Brand Name - Product name, its specifications and all other details of it' },
-        { imgSrc: product4, price: '£ 4.66', text: 'Brand Name - Product name, its specifications and all other details of it' },
-        { imgSrc: product5, price: '£ 3.66', text: 'Brand Name - Product name, its specifications and all other details of it' },
+        {
+            id: '1',
+            imgSrc: product1,
+            specialText: 'Special',
+            isSpecial: true,
+            paragraph: 'Brand Name - Product name, its specifications and all other details of it',
+            price: '7.66',
+            name: 'Brand Name',
+        },
+        {
+            id: '2',
+            imgSrc: product2,
+            specialText: '',
+            isSpecial: false,
+            paragraph: 'Brand Name - Product name, its specifications and all other details of it',
+            price: '7.66',
+            name: 'Brand Name',
+        },
+        {
+            id: '3',
+            imgSrc: product3,
+            specialText: '',
+            isSpecial: false,
+            paragraph: 'Brand Name - Product name, its specifications and all other details of it',
+            price: '7.66',
+            name: 'Brand Name',
+        },
+        {
+            id: '4',
+            imgSrc: product4,
+            specialText: '',
+            isSpecial: false,
+            paragraph: 'Brand Name - Product name, its specifications and all other details of it',
+            price: '7.66',
+            name: 'Brand Name',
+        },
+        {
+            id: '5',
+            imgSrc: product5,
+            specialText: '',
+            isSpecial: false,
+            paragraph: 'Brand Name - Product name, its specifications and all other details of it',
+            price: '7.66',
+            name: 'Brand Name',
+        },
     ];
     return (
         <>
@@ -24,7 +64,15 @@ const BestSelling = () => {
             </div>
             <div className="flex flex-row justify-center gap-10 flex-wrap mx-40">
                 {bestSelling && bestSelling.map((item, index) => (
-                    <SellingCards id={String(index)} text={item?.text} price={item?.price} imgSrc={item?.imgSrc} />
+                    <SellingCards
+                        key={index}
+                        id={item.id}
+                        imgSrc={item.imgSrc}
+                        specialText={item.specialText}
+                        isSpecial={item.isSpecial}
+                        paragaraph={item.paragraph}
+                        price={item.price}
+                        name={item.name} />
                 ))}
             </div>
         </>

@@ -3,6 +3,7 @@ import Rectangle2 from '../../assets/Rectangle2.png';
 import Rectangle3 from '../../assets/Rectangle3.png';
 import Rectangle4 from '../../assets/Rectangle4.png';
 import Rectangle5 from '../../assets/Rectangle5.png';
+import { motion } from 'framer-motion';
 const ExploreCategory = () => {
     return (
         <>
@@ -12,26 +13,26 @@ const ExploreCategory = () => {
                 </div>
             </div>
             <div className='flex flex-row justify-center gap-10 flex-wrap mt-8 py-8' >
-                <div>
+                <motion.div whileHover={{ scale: 1.1 }} >
                     <div className=""><img src={Rectangle1} alt="pencil" className="h-60" /></div>
                     <div className="text-start mt-4 font-semibold"><p>Paints And Brushes</p></div>
-                </div>
-                <div>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.1 }} >
                     <div className=""><img src={Rectangle2} alt="pencil" className="h-60" /></div>
                     <div className="text-start mt-4 font-semibold"><p>Clay Sand And Glitter</p></div>
-                </div>
-                <div>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.1 }} >
                     <div className=""><img src={Rectangle3} alt="pencil" className="h-60" /></div>
                     <div className="text-start mt-4 font-semibold"><p>Canvas and Artist Pads</p></div>
-                </div>
-                <div>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.1 }} >
                     <div className=""><img src={Rectangle4} alt="pencil" className="h-60" /></div>
                     <div className="text-start mt-4 font-semibold"><p>Costumes and Coats</p></div>
-                </div>
-                <div>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.1 }} >
                     <div className=""><img src={Rectangle5} alt="pencil" className="h-60" /></div>
                     <div className="text-start mt-4 font-semibold"><p>Gifting</p></div>
-                </div>
+                </motion.div>
             </div>
 
         </>

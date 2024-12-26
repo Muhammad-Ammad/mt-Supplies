@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface Product {
   id: string,
   quantity: number,
-  name: string,
+  Name: string,
   price: string,
   paragaraph: string,
   imgSrc: string,
@@ -15,14 +15,16 @@ interface State {
   userInfo: any[],
   products: Product[],
   productDetails: Product[],
+  BreadValue: Array<[]>,
 }
 const initialState: State = {
   userInfo: [],
+  BreadValue: [],
   products: [
     {
       id: '',
       quantity: 0,
-      name: '',
+      Name: '',
       price: '',
       paragaraph: '',
       imgSrc: '',
@@ -104,6 +106,9 @@ export const mtSupplies = createSlice({
     removeProductDetail: (state) => {
       state.productDetails = [];
     },
+    setBreadCrumb: (state, action) => {
+      state.BreadValue = action.payload;
+    },
   },
 });
 
@@ -117,5 +122,6 @@ export const {
   increaseProductDetailQuantity,
   drecreaseProductDetailQuantity,
   removeProductDetail,
+  setBreadCrumb,
 } = mtSupplies.actions;
 export default mtSupplies.reducer;

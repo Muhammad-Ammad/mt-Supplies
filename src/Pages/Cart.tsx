@@ -8,7 +8,8 @@ import Header from "../Components/Header/Header";
 import { resetCart } from "../redux/mtSupplies";
 import { RootState } from "../store";
 import Footer from "../Components/Footer/Footer";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { Button } from "@material-tailwind/react";
 
 const Cart = () => {
     const dispatch = useDispatch();
@@ -16,6 +17,10 @@ const Cart = () => {
     const [totalAmt, setTotalAmt] = useState(0);
     const [shippingCharge, setShippingCharge] = useState(0);
     const navigate = useNavigate();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     useEffect(() => {
         let price = 0;
         const cartItems = products;
@@ -95,11 +100,16 @@ const Cart = () => {
                                     </p>
                                 </div>
                                 <div className="flex justify-end">
-                                    {/* <Link to="/paymentgateway"> */}
-                                    <button className="w-52 h-10 bg-gradient-to-r from-[#0082E7] to-[#0053A5] text-white hover:bg-black duration-300 font-medium">
-                                        Proceed to Checkout
-                                    </button>
-                                    {/* </Link> */}
+                                    <Link to="/paymentgateway">
+                                        <Button
+                                            fullWidth
+                                            className="bg-gradient-to-r from-[#0082E7] to-[#0053A5] font-titleFont"
+                                            children={'Proceed to Checkout'}
+                                            onPointerEnterCapture={undefined}
+                                            onPointerLeaveCapture={undefined}
+                                            placeholder={undefined}
+                                        />
+                                    </Link>
                                 </div>
                             </div>
                         </div>

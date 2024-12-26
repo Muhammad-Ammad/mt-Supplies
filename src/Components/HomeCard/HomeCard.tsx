@@ -2,7 +2,8 @@ import { useDispatch } from 'react-redux';
 import WishlistHeart from '../../assets/icons/WishlistHeart.png';
 import Whitebluebordercart from '../../assets/icons/whitebluebordercart.png';
 import { useNavigate } from 'react-router';
-import { addToCart, removeProductDetail, resetCart, setProductDetail } from '../../redux/mtSupplies';
+import { addToCart, removeProductDetail, resetCart, setBreadCrumb, setProductDetail } from '../../redux/mtSupplies';
+import { motion } from 'framer-motion';
 
 interface homeCardProps {
     imgSrc: any,
@@ -32,7 +33,9 @@ const HomeCard: React.FC<homeCardProps> = ({ imgSrc, specialText, isSpecial, par
         };
         dispatch(setProductDetail(counterCartState));
         // dispatch(removeProductDetail());
-        navigate('/ProductDetail');
+        const breadArray = ['Shop', 'ProductDetail'];
+        dispatch(setBreadCrumb(breadArray));
+        navigate('/shop/ProductDetail');
     };
     const handleCartCounter = () => {
         const counterCartState = {
@@ -54,14 +57,14 @@ const HomeCard: React.FC<homeCardProps> = ({ imgSrc, specialText, isSpecial, par
                 <img src={imgSrc} alt="product5" onClick={() => handleClick()} />
                 <div className="absolute top-0 left-0 ml-8">
                     {isSpecial &&
-                        <div className='bg-lime-500 p-2 border-2 border-t-0 rounded-b-xl' >
-                            <label className='text-base text-slate-50' >{specialText}</label>
+                        <div className='bg-light-green-600 p-2 border-2 border-t-0 rounded-b-xl' >
+                            <label className='text-base text-white' >{specialText}</label>
                         </div>
                     }
 
                 </div>
-                <div className="absolute top-0 left-40 ml-8"><img src={WishlistHeart} alt="" /> </div>
-                <div className="absolute bottom-2 left-40 ml-10" onClick={() => handleCartCounter()} ><img src={Whitebluebordercart} alt="" /></div>
+                <motion.div whileTap={{ scale: 0.9 }} className="absolute top-0 left-40 ml-8"><img src={WishlistHeart} alt="WishlistHeart" /> </motion.div>
+                <motion.div whileTap={{ scale: 0.9 }} className="absolute bottom-2 left-40 ml-10" onClick={() => handleCartCounter()} ><img src={Whitebluebordercart} alt="" /></motion.div>
             </div>
             <div className=" p-4 w-[15em]">
                 <p className='font-sans'>{paragaraph}</p>

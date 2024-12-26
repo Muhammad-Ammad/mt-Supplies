@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../store';
 import { addToCart, Product } from '../redux/mtSupplies';
+import { motion } from 'framer-motion';
 const ProductDetail = () => {
     const { productDetails } = useSelector((state: RootState) => state.mtSupplies);
     const [form, setForm] = useState<Product[]>([]);
@@ -31,16 +32,51 @@ const ProductDetail = () => {
     }, []);
 
     const bestSelling = [
-        { imgSrc: product1, price: '£ 7.66', text: 'Brand Name - Product name, its specifications and all other details of it' },
-        { imgSrc: product2, price: '£ 6.66', text: 'Brand Name - Product name, its specifications and all other details of it' },
-        { imgSrc: product3, price: '£ 5.66', text: 'Brand Name - Product name, its specifications and all other details of it' },
-        { imgSrc: product4, price: '£ 4.66', text: 'Brand Name - Product name, its specifications and all other details of it' },
-        { imgSrc: product5, price: '£ 3.66', text: 'Brand Name - Product name, its specifications and all other details of it' },
-        { imgSrc: product5, price: '£ 3.66', text: 'Brand Name - Product name, its specifications and all other details of it' },
-        { imgSrc: product5, price: '£ 3.66', text: 'Brand Name - Product name, its specifications and all other details of it' },
-        { imgSrc: product5, price: '£ 3.66', text: 'Brand Name - Product name, its specifications and all other details of it' },
-        { imgSrc: product5, price: '£ 3.66', text: 'Brand Name - Product name, its specifications and all other details of it' },
-        { imgSrc: product5, price: '£ 3.66', text: 'Brand Name - Product name, its specifications and all other details of it' },
+        {
+            id: '1',
+            imgSrc: product1,
+            specialText: 'Special',
+            isSpecial: true,
+            paragraph: 'Brand Name - Product name, its specifications and all other details of it',
+            price: '7.66',
+            name: 'Brand Name',
+        },
+        {
+            id: '2',
+            imgSrc: product2,
+            specialText: '',
+            isSpecial: false,
+            paragraph: 'Brand Name - Product name, its specifications and all other details of it',
+            price: '7.66',
+            name: 'Brand Name',
+        },
+        {
+            id: '3',
+            imgSrc: product3,
+            specialText: '',
+            isSpecial: false,
+            paragraph: 'Brand Name - Product name, its specifications and all other details of it',
+            price: '7.66',
+            name: 'Brand Name',
+        },
+        {
+            id: '4',
+            imgSrc: product4,
+            specialText: '',
+            isSpecial: false,
+            paragraph: 'Brand Name - Product name, its specifications and all other details of it',
+            price: '7.66',
+            name: 'Brand Name',
+        },
+        {
+            id: '5',
+            imgSrc: product5,
+            specialText: '',
+            isSpecial: false,
+            paragraph: 'Brand Name - Product name, its specifications and all other details of it',
+            price: '7.66',
+            name: 'Brand Name',
+        },
     ];
     const handleAddCart = () => {
         const payload = { ...form[0] }
@@ -59,7 +95,7 @@ const ProductDetail = () => {
     const decreaseProductDetailQuantity = () => {
         const newForm = form.map(item => ({
             ...item,
-            quantity: item.quantity - 1,
+            quantity: item.quantity === 1 ? item.quantity : item.quantity - 1,
         }));
 
         setForm(newForm);
@@ -104,9 +140,9 @@ const ProductDetail = () => {
                                     +
                                 </button>
                             </div>
-                            <button onClick={() => handleAddCart()} className='bg-gradient-to-r from-[#0082E7] 
+                            <motion.button whileTap={{ scale: 0.9 }} onClick={() => handleAddCart()} className='bg-gradient-to-r from-[#0082E7] 
                         to-[#0053A5] py-2 px-8 font-medium ml-4 rounded-xl text-gray-200 hover:text-white duration-300 
-                        hover:from-[#0053A5] hover:to-[#003B7A] active:bg-violet-700 focus:outline-none focus:ring focus:ring-blue-300' type='button' >Add to Cart</button><br />
+                        hover:from-[#0053A5] hover:to-[#003B7A] active:bg-violet-700 focus:outline-none focus:ring focus:ring-blue-300' type='button' >Add to Cart</motion.button><br />
                         </div>
                         <div className='mt-10' >
                             <label className='text-lg font-medium' >SKU: 8901425031926</label>
@@ -187,7 +223,7 @@ const ProductDetail = () => {
                             <label className='text-3xl font-semibold' >Related Products</label>
                         </div>
                     </div>
-                    <div className="mt-10 snap-x flex overflow-x-auto scroll-smooth space-x-4">
+                    <div className="mt-10 flex snap-x overflow-x-auto scroll-smooth space-x-4">
                         {bestSelling &&
                             bestSelling.map((item, index) => (
                                 <div
@@ -195,10 +231,14 @@ const ProductDetail = () => {
                                     className="snap-start flex-shrink-0 w-80"
                                 >
                                     <SellingCards
-                                        id={String(index)}
-                                        text={item?.text}
-                                        price={item?.price}
-                                        imgSrc={item?.imgSrc}
+                                        key={index}
+                                        id={item.id}
+                                        imgSrc={item.imgSrc}
+                                        specialText={item.specialText}
+                                        isSpecial={item.isSpecial}
+                                        paragaraph={item.paragraph}
+                                        price={item.price}
+                                        name={item.name}
                                     />
                                 </div>
                             ))}

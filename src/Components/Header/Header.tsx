@@ -45,55 +45,39 @@ const Header = () => {
       imgSrc: product1,
       specialText: 'Special',
       isSpecial: true,
-      paragaraph: 'Brand Name - Product name, its specifications and all other details of it',
+      paragraph: 'Brand Name - Product name, its specifications and all other details of it',
       price: '7.66',
-      name: 'Pencil',
+      Name: 'Pencil',
       quantity: 0,
-      isDiscount: false
+      isDiscount: false,
+      productId: 0,
+      categoryName: 'Pencils',
     },
     {
       id: '2',
       imgSrc: product2,
       specialText: '',
       isSpecial: false,
-      paragaraph: 'Brand Name - Product name, its specifications and all other details of it',
+      paragraph: 'Brand Name - Product name, its specifications and all other details of it',
       price: '7.66',
-      name: 'Pen',
+      Name: 'Pen',
       quantity: 0,
-      isDiscount: false
+      isDiscount: false,
+      productId: 0,
+      categoryName: 'Pens',
     },
     {
       id: '3',
       imgSrc: product3,
       specialText: '',
       isSpecial: false,
-      paragaraph: 'Brand Name - Product name, its specifications and all other details of it',
+      paragraph: 'Brand Name - Product name, its specifications and all other details of it',
       price: '7.66',
-      name: 'Pen',
+      Name: 'Pen',
       quantity: 0,
-      isDiscount: false
-    },
-    {
-      id: '4',
-      imgSrc: product4,
-      specialText: '',
-      isSpecial: false,
-      paragaraph: 'Brand Name - Product name, its specifications and all other details of it',
-      price: '7.66',
-      name: 'Pen',
-      quantity: 0,
-      isDiscount: false
-    },
-    {
-      id: '5',
-      imgSrc: product5,
-      specialText: '',
-      isSpecial: false,
-      paragaraph: 'Brand Name - Product name, its specifications and all other details of it',
-      price: '7.66',
-      name: 'Pencil',
-      quantity: 0,
-      isDiscount: false
+      isDiscount: false,
+      productId: 0,
+      categoryName: 'Brushes',
     },
   ];
   const [formData, setFormData] = useState(searchData);
@@ -115,7 +99,7 @@ const Header = () => {
   };
 
   const handleSearchClick = (value: string) => {
-    const formFilteredArray = searchData.filter((item) => item?.name.toLowerCase().includes(value.toLowerCase()));
+    const formFilteredArray = searchData.filter((item) => item?.Name.toLowerCase().includes(value.toLowerCase()));
     setIsSearchMenuOpen(true);
     setFormData(formFilteredArray);
   };
@@ -166,14 +150,15 @@ const Header = () => {
                       <SearchCard
                         key={index}
                         imgSrc={item?.imgSrc}
-                        name={item?.name}
-                        paragaraph={item?.paragaraph}
+                        name={item?.Name}
+                        paragraph={item?.paragraph}
                         id={item?.id}
                         specialText={'Special'}
                         isSpecial={true}
                         price={'7.66'}
                         quantity={0}
                         isDiscount={false}
+                        categoryName={item?.categoryName}
                       />
                     ))}
                   </motion.div>

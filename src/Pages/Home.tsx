@@ -6,7 +6,6 @@ import CategoryCards from '../Components/CategoryCards/CategoryCards';
 import MassonryCategory from '../Components/MassonryCategory/MassonryCategory';
 import ExploreCategory from '../Components/ExploreCategory/ExploreCategory';
 import Brand from '../Components/Brand/Brand';
-import Product from '../Components/Product/Product';
 import Footer from '../Components/Footer/Footer';
 import BestSelling from '../Components/BestSelling/BestSelling';
 import { useEffect } from 'react';
@@ -27,7 +26,7 @@ const Home = () => {
                 <MassonryCategory />
                 <ExploreCategory />
                 <Brand />
-                <Product />
+                {/* <Product /> */}
                 <Footer />
             </div>
         </>

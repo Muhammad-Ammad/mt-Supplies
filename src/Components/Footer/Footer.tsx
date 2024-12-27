@@ -24,13 +24,13 @@ const Footer = () => {
             </div>
             <div className="mt-4">
               <input
-                className="p-3 outline-none lg:rounded-s-2xl md:rounded-s-2xl sm:rounded-none lg:w-80 md:w-80 sm:w-full"
+                className="p-3 outline-none lg:rounded-s-2xl md:rounded-s-2xl sm:rounded-none lg:w-80 md:w-80 sm:w-full border border-white"
                 type="email"
                 placeholder="Email address"
               />
               <button
                 className="text-white lg:mt-0 md:mt-0 sm:mt-2 p-3 lg:rounded-r-2xl md:rounded-r-2xl sm:rounded-none border lg:w-auto md:w-auto sm:w-full border-white"
-                type="button">Subscribe </button>
+                type="button"><span>Subscribe</span></button>
             </div>
             <div className='flex flex-row mt-4'>
               <div className="pt-4"><img src={instagram} alt="ig" className="px-3" /></div>

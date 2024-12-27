@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router';
 import blueLine from '../../assets/icons/blueline.png';
 import { motion } from 'framer-motion';
 interface cardProps {
@@ -7,15 +8,19 @@ interface cardProps {
 }
 
 const Card: React.FC<cardProps> = ({ imgSrc, label, id }) => {
+    const navigate = useNavigate();
+    const handleNavigation = () => {
+        navigate('/shop')
+    };
     return (
         <motion.div
             id={id}
-            className="group h-[24em] w-[13em] border border-gray-300 border-t-0 rounded-3xl overflow-hidden flex flex-col py-8 hover:bg-[#006fcc]"
+            className="cursor-pointer group h-[24em] w-[13em] border border-gray-300 border-t-0 rounded-3xl overflow-hidden flex flex-col py-8 hover:bg-[#006fcc]"
             whileHover={{
                 scale: 1.1,
                 transition: { duration: 0.2 },
             }}
-            whileTap={{ scale: 0.9 }}
+            onClick={() => handleNavigation()}
         >
             <img src={imgSrc} alt="Parties Decor" className="w-[8em] self-center mt-4" />
             <h2 className="text-center font-bold mt-4 group-hover:text-white">{label}</h2>

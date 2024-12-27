@@ -50,7 +50,7 @@ const SellingCards: React.FC<imgSrc> = ({ imgSrc, specialText, isSpecial, paraga
         // dispatch(resetCart());
     };
     return (
-        <div id={id} className="mt-4">
+        <div id={id} className="mt-4 cursor-pointer">
             <div className="relative">
                 <img src={imgSrc} alt="product5" onClick={() => handleClick()} />
                 <motion.div whileTap={{ scale: 0.9 }} className="absolute top-0 left-40 ml-8"><img src={WishlistHeart} alt="" /> </motion.div>

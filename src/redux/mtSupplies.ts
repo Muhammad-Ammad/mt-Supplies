@@ -2,13 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface Product {
   id: string,
   quantity: number,
+  productId: number,
   Name: string,
   price: string,
-  paragaraph: string,
+  paragraph: string,
   imgSrc: string,
   isSpecial: boolean,
   specialText: string,
   isDiscount: boolean,
+  categoryName: string,
 }
 
 interface State {
@@ -16,6 +18,7 @@ interface State {
   products: Product[],
   productDetails: Product[],
   BreadValue: Array<[]>,
+  searchedProduct: Product[],
 }
 const initialState: State = {
   userInfo: [],
@@ -24,16 +27,19 @@ const initialState: State = {
     {
       id: '',
       quantity: 0,
+      productId: 0,
       Name: '',
       price: '',
-      paragaraph: '',
+      paragraph: '',
       imgSrc: '',
       isSpecial: false,
       specialText: '',
       isDiscount: false,
+      categoryName: '',
     },
   ],
   productDetails: [],
+  searchedProduct: [],
 };
 
 export const mtSupplies = createSlice({
@@ -109,6 +115,12 @@ export const mtSupplies = createSlice({
     setBreadCrumb: (state, action) => {
       state.BreadValue = action.payload;
     },
+    setSearchItem: (state, action) => {
+      state.searchedProduct = action.payload;
+    },
+    clearSearchedProduct(state) {
+      state.searchedProduct = [];
+    },
   },
 });
 
@@ -123,5 +135,7 @@ export const {
   drecreaseProductDetailQuantity,
   removeProductDetail,
   setBreadCrumb,
+  setSearchItem,
+  clearSearchedProduct,
 } = mtSupplies.actions;
 export default mtSupplies.reducer;

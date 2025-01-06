@@ -70,7 +70,7 @@ const BestSelling = () => {
                         imgSrc={item.imgSrc}
                         specialText={item.specialText}
                         isSpecial={item.isSpecial}
-                        paragaraph={item.paragraph}
+                        paragraph={item.paragraph}
                         price={item.price}
                         name={item.name} />
                 ))}

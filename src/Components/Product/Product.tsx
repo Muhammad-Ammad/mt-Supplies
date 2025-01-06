@@ -121,7 +121,7 @@ const Product = () => {
 							aria-label="Search"
 						/>
 					</div>
-					<div className="">
+					{/* <div className="">
 						<CustomInput
 							type={'checkbox'}
 							id={'chkExp'}
@@ -215,7 +215,7 @@ const Product = () => {
 							htmlFor={'flexCheckDefault'}
 							label={'Face or Finger Paint'}
 						/>
-					</div>
+					</div> */}
 
 					<div className="flex justify-center">
 						<div>
@@ -271,7 +271,7 @@ const Product = () => {
 							imgSrc={item.imgSrc}
 							specialText={item.specialText}
 							isSpecial={item.isSpecial}
-							paragaraph={item.paragraph}
+							paragraph={item.paragraph}
 							price={item.price}
 							name={item.name}
 						/>

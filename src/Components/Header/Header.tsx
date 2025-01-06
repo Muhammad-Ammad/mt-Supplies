@@ -10,12 +10,8 @@ import { useEffect, useRef, useState } from 'react';
 import { RootState } from '../../store';
 import { useDispatch, useSelector } from 'react-redux';
 import { Product, setBreadCrumb } from '../../redux/mtSupplies';
-import { motion, Variants, AnimatePresence } from 'framer-motion';
-import product1 from '../../assets/bestSellingproducts/product1.png';
-import product2 from '../../assets/bestSellingproducts/product2.png';
-import product3 from '../../assets/bestSellingproducts/product3.png';
-import product4 from '../../assets/bestSellingproducts/product4.png';
-import product5 from '../../assets/bestSellingproducts/product5.png';
+import { motion, AnimatePresence } from 'framer-motion';
+import { product1, product2, Brush1 } from '../../assets/index';
 import SearchCard from '../Searchcard/SearchCard';
 
 const Header = () => {
@@ -68,12 +64,12 @@ const Header = () => {
     },
     {
       id: '3',
-      imgSrc: product3,
+      imgSrc: Brush1,
       specialText: '',
       isSpecial: false,
       paragraph: 'Brand Name - Product name, its specifications and all other details of it',
       price: '7.66',
-      Name: 'Pen',
+      Name: 'Brush',
       quantity: 0,
       isDiscount: false,
       productId: 0,

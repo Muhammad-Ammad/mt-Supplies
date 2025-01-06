@@ -11,10 +11,10 @@ interface imgSrc {
     id: string,
     specialText: string,
     isSpecial: boolean,
-    paragaraph: string,
+    paragraph: string,
 }
 
-const SellingCards: React.FC<imgSrc> = ({ imgSrc, specialText, isSpecial, paragaraph, price, id, name }) => {
+const SellingCards: React.FC<imgSrc> = ({ imgSrc, specialText, isSpecial, paragraph, price, id, name }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const SellingCards: React.FC<imgSrc> = ({ imgSrc, specialText, isSpecial, paraga
             imgSrc: imgSrc,
             specialText: specialText,
             isSpecial: isSpecial,
-            paragaraph: paragaraph,
+            paragraph: paragraph,
             price: price,
             quantity: 1,
             Name: name
@@ -41,7 +41,7 @@ const SellingCards: React.FC<imgSrc> = ({ imgSrc, specialText, isSpecial, paraga
             imgSrc: imgSrc,
             specialText: specialText,
             isSpecial: isSpecial,
-            paragaraph: paragaraph,
+            paragraph: paragraph,
             price: price,
             quantity: 1,
             Name: name
@@ -57,7 +57,7 @@ const SellingCards: React.FC<imgSrc> = ({ imgSrc, specialText, isSpecial, paraga
                 <motion.div whileTap={{ scale: 0.9 }} className="absolute bottom-2 left-40 ml-10" onClick={() => handleCartCounter()} ><img src={whitebluebordercart} alt="" /></motion.div>
             </div>
             <div className=" p-4 w-[15em]">
-                <p className='font-sans'>{paragaraph}</p>
+                <p className='font-sans'>{paragraph}</p>
                 <h3 className='text-2xl mt-4 font-semibold font-quicksand' >£ {price}</h3>
             </div>
         </div>

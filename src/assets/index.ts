@@ -11,6 +11,8 @@ import product3 from './bestSellingproducts/product3.png'
 import product4 from './bestSellingproducts/product4.png'
 import product5 from './bestSellingproducts/product5.png'
 
+import fone from "./fone.jpg"
+
 
 
 export {
@@ -28,4 +30,7 @@ export {
     product3,
     product4,
     product5,
+
+    //Banner
+    fone
 };

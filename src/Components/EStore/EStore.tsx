@@ -31,7 +31,7 @@ interface categoryList {
     isChecked: boolean
 }
 
-const categoryData: categoryList[] = [
+const categoryInitialData: categoryList[] = [
     { id: 1, label: 'Pencil', isChecked: false },
     { id: 2, label: 'Pen', isChecked: false },
     { id: 3, label: 'Brush', isChecked: false },
@@ -212,7 +212,7 @@ const Product = () => {
     const [value, setValue] = useState<number[]>([1, 20]);
     const [isDisabled, setIsDisabled] = useState<boolean>(true);
     const [globalData, setData] = useState<ProductInterface[]>(initialData);
-    const [category, setCategory] = useState(categoryData);
+    const [category, setCategory] = useState(categoryInitialData);
     const searchedProduct = useSelector((state: RootState) => state.mtSupplies.searchedProduct);
 
     const navigate = useNavigate();
@@ -238,7 +238,7 @@ const Product = () => {
             imgSrc: item?.imgSrc,
             specialText: item?.specialText,
             isSpecial: item?.isSpecial,
-            paragaraph: item?.paragraph,
+            paragraph: item?.paragraph,
             price: item?.price,
             quantity: 1,
             Name: item?.name
@@ -254,7 +254,7 @@ const Product = () => {
             imgSrc: item?.imgSrc,
             specialText: item?.specialText,
             isSpecial: item?.isSpecial,
-            paragaraph: item?.paragraph,
+            paragraph: item?.paragraph,
             price: item?.price,
             quantity: 1,
             Name: item?.name
@@ -294,6 +294,8 @@ const Product = () => {
 
     const handleResetFilter = () => {
         setData(initialData);
+        setCategory(categoryInitialData);
+        setValue([1, 20]);
     };
 
     return (
@@ -304,8 +306,8 @@ const Product = () => {
                     <BreadCrumb />
                 </div>
             </div>
-            <div className="flex flex-row justify-center px-40">
-                <div className="flex flex-col gap-3 basis-1/4 mt-4">
+            <div className="flex lg:flex-row md:flex-col sm:flex-col justify-center lg:px-20 md:px-10 sm-px-0">
+                <div className="flex flex-col gap-3 basis-1/4 mt-4 lg:items-start md:items-center sm:items-center">
                     <div className="text-xl font-semibold">Category</div>
                     <div className="exp-reg ml-4">
                         <div className="text-lg text-gray-800 font-medium cursor-pointer">Stationery</div>
@@ -327,8 +329,9 @@ const Product = () => {
                         </ul>
                     </div>
 
-                    <div className="flex flex-col justify-center">
-                        <div className='w-[15rem] place-self-center mt-10' >
+                    <div className="flex flex-col items-center">
+                        <div className='w-[15rem] mt-10' >
+                            <div className='font-medium text-center text-gray-700'>Price Range (<span className='font-semibold' >£ 1</span> to <span className='font-semibold' >£ 20</span>)</div>
                             <Slider
                                 getAriaLabel={() => 'Temperature range'}
                                 min={1}
@@ -339,9 +342,10 @@ const Product = () => {
                                 onChange={handleChange}
                                 valueLabelDisplay="auto"
                                 getAriaValueText={valuetext}
+                                className='mt-5'
                             />
                         </div>
-                        <div className='flex gap-5 mt-10 ml-2 place-self-center' >
+                        <div className='flex gap-5 mt-10 ml-2' >
                             <motion.button whileTap={{ scale: 0.9 }}>
                                 <Button
                                     fullWidth

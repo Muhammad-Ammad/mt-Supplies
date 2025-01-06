@@ -13,6 +13,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../store';
 import { addToCart, Product } from '../redux/mtSupplies';
 import { motion } from 'framer-motion';
+import pencil from "../assets/pencil.webp";
+
 const ProductDetail = () => {
     const { productDetails } = useSelector((state: RootState) => state.mtSupplies);
     const [form, setForm] = useState<Product[]>([]);
@@ -22,9 +24,9 @@ const ProductDetail = () => {
         if (form.length === 0) {
             const products = [...productDetails]; // Create a copy to avoid direct mutation or created a shallow copy
             if (products.length > 0) {
-                const splitArray = products[0].paragaraph?.split(',') || [];
+                const splitArray = products[0].paragraph?.split(',') || [];
                 if (splitArray.length > 1 && !splitArray[1].includes('<br />')) {
-                    products[0] = { ...products[0], paragaraph: `${splitArray[0]}, <br />${splitArray[1]}` }
+                    products[0] = { ...products[0], paragraph: `${splitArray[0]}, <br />${splitArray[1]}` }
                 }
             }
             setForm(products);
@@ -104,71 +106,106 @@ const ProductDetail = () => {
         <>
             <Header />
             <div >
-                <div className='flex justify-center flex-wrap' >
-                    <div className="w-1/2 flex justify-center items-center">
-                        <div className="w-3/4 h-3/4 bg-gray-100 flex items-center justify-center overflow-hidden">
+                <div className="flex flex-wrap justify-center">
+                    {/* Left Section: Image */}
+                    <div className="w-full md:w-1/2 flex justify-center items-center">
+                        <div className="bg-white flex items-center justify-center flex-wrap overflow-hidden w-full">
                             <img
-                                src={form && form[0]?.imgSrc}
+                                // src={form && form[0]?.imgSrc}
+                                src={pencil}
                                 alt="Product1"
-                                className="w-full h-full object-contain"
+                                className="object-contain max-w-full h-[30rem]"
                             />
                         </div>
                     </div>
-                    <div className='w-1/2 p-10' >
+                    {/* Right Section: Product Details */}
+                    <div className="w-full md:w-1/2 p-4 md:p-10">
                         <div>
                             <BreadCrumb />
                         </div>
-                        <div className='flex flex-wrap mt-10' >
-                            <label className='text-2xl font-semibold' dangerouslySetInnerHTML={{ __html: form && form[0]?.paragaraph }} ></label><br />
+                        <div className="flex flex-wrap mt-6">
+                            <label
+                                className="text-xl md:text-2xl font-semibold"
+                                dangerouslySetInnerHTML={{
+                                    __html: form && form[0]?.paragraph,
+                                }}
+                            ></label>
                         </div>
-                        <div className='flex items-center gap-5 mt-10' >
-                            <label className='text-3xl font-bold' >£ {form && form[0]?.price}</label>
-                            {form && form[0]?.isDiscount && <><label className='line-through text-gray-500'>3.00</label><br /></>}
+                        <div className="flex items-center gap-4 mt-6">
+                            <label className="text-2xl md:text-3xl font-bold">
+                                £ {form && form[0]?.price}
+                            </label>
+                            {form && form[0]?.isDiscount && (
+                                <>
+                                    <label className="line-through text-gray-500">3.00</label>
+                                </>
+                            )}
                         </div>
-                        <div className='mt-1'>
-                            {form && form[0]?.isDiscount && <label className='text-green-700 font-medium' >(33% off)</label>}
+                        <div className="mt-1">
+                            {form && form[0]?.isDiscount && (
+                                <label className="text-green-700 font-medium">(33% off)</label>
+                            )}
                         </div>
-                        <div className='flex gap-6 mt-4 items-center' >
-                            <div>
-                                <button onClick={() => decreaseProductDetailQuantity()} className='w-6 h-6 bg-gray-100 text-2xl flex items-center justify-center hover:bg-gray-300 cursor-pointer duration-300 border-gray-300 hover:border-gray-300'>
-                                    -
-                                </button>
-                            </div>
-                            <div><label className='font-medium text-lg'>{form && form[0]?.quantity}</label></div>
-                            <div>
-                                <button onClick={() => increaseProductDetailQuantity()} className='w-6 h-6 bg-gray-100 text-2xl flex items-center justify-center hover:bg-gray-300 cursor-pointer duration-300 border-gray-300 hover:border-gray-300'>
-                                    +
-                                </button>
-                            </div>
-                            <motion.button whileTap={{ scale: 0.9 }} onClick={() => handleAddCart()} className='bg-gradient-to-r from-[#0082E7] 
-                        to-[#0053A5] py-2 px-8 font-medium ml-4 rounded-xl text-gray-200 hover:text-white duration-300 
-                        hover:from-[#0053A5] hover:to-[#003B7A] active:bg-violet-700 focus:outline-none focus:ring focus:ring-blue-300' type='button' >Add to Cart</motion.button><br />
+                        <div className="flex gap-4 mt-4 items-center">
+                            <button
+                                onClick={() => decreaseProductDetailQuantity()}
+                                className="w-8 h-8 bg-gray-100 text-xl flex items-center justify-center hover:bg-gray-300 cursor-pointer duration-300 border-gray-300 hover:border-gray-300"
+                            >
+                                -
+                            </button>
+                            <label className="font-medium text-lg">
+                                {form && form[0]?.quantity}
+                            </label>
+                            <button
+                                onClick={() => increaseProductDetailQuantity()}
+                                className="w-8 h-8 bg-gray-100 text-xl flex items-center justify-center hover:bg-gray-300 cursor-pointer duration-300 border-gray-300 hover:border-gray-300"
+                            >
+                                +
+                            </button>
+                            <motion.button
+                                whileTap={{ scale: 0.9 }}
+                                onClick={() => handleAddCart()}
+                                className="bg-gradient-to-r from-[#0082E7] to-[#0053A5] py-2 px-6 md:px-8 font-medium rounded-xl text-gray-200 hover:text-white duration-300 hover:from-[#0053A5] hover:to-[#003B7A] active:bg-violet-700 focus:outline-none focus:ring focus:ring-blue-300"
+                                type="button"
+                            >
+                                Add to Cart
+                            </motion.button>
                         </div>
-                        <div className='mt-10' >
-                            <label className='text-lg font-medium' >SKU: 8901425031926</label>
+                        <div className="mt-8">
+                            <label className="text-base md:text-lg font-medium">
+                                SKU: 8901425031926
+                            </label>
                         </div>
-                        <div className='flex mt-10 justify-between w-1/2' >
-                            <div><label className='text-lg font-medium' >Estimated Delivery</label></div>
-                            <div><label className='text-lg font-bold' >Within a Week</label></div>
+                        <div className="flex mt-8 justify-between w-full md:w-1/2">
+                            <label className="text-base md:text-lg font-medium">
+                                Estimated Delivery
+                            </label>
+                            <label className="text-base md:text-lg font-bold">
+                                Within a Week
+                            </label>
                         </div>
-                        <div className='mt-5 flex justify-between w-1/2' >
-                            <div>
-                                <select className='p-1 w-20 outline-none text-gray-500' value={'UK'} >
-                                    <option value={'1'} >UK</option>
-                                </select>
-                            </div>
-                            <div>
-                                <select className='p-1 w-64 outline-none text-gray-500' value={'Brimingham Other'} >
-                                    <option value={'1'} >Brimingham Other</option>
-                                </select>
-                            </div>
-
+                        <div className="mt-4 flex justify-between w-full md:w-1/2">
+                            <select
+                                className="p-1 w-20 outline-none text-gray-500"
+                                value={"UK"}
+                            >
+                                <option value={"1"}>UK</option>
+                            </select>
+                            <select
+                                className="p-1 w-full md:w-64 outline-none text-gray-500"
+                                value={"Brimingham Other"}
+                            >
+                                <option value={"1"}>Brimingham Other</option>
+                            </select>
                         </div>
-                        <div>
+                        <div className="mt-6">
                             <Collapse />
                         </div>
                     </div>
                 </div>
+
+
+
                 <div className=' ml-10 flex justify-start flex-wrap' >
                     <div className='w-3/4' >
                         <div>
@@ -236,7 +273,7 @@ const ProductDetail = () => {
                                         imgSrc={item.imgSrc}
                                         specialText={item.specialText}
                                         isSpecial={item.isSpecial}
-                                        paragaraph={item.paragraph}
+                                        paragraph={item.paragraph}
                                         price={item.price}
                                         name={item.name}
                                     />

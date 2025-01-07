@@ -15,7 +15,7 @@ import {
     product4,
     product5,
 }
-    from '../../assets/index'
+    from '../../assets/index';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
@@ -241,7 +241,10 @@ const Product = () => {
             paragraph: item?.paragraph,
             price: item?.price,
             quantity: 1,
-            Name: item?.name
+            Name: item?.name,
+            categoryName: item?.categoryName,
+            isDiscount: item?.isDiscount,
+            productId: item?.productId,
         };
         dispatch(setProductDetail(counterCartState));
         const breadArray = ['Shop', 'ProductDetail'];
@@ -257,7 +260,10 @@ const Product = () => {
             paragraph: item?.paragraph,
             price: item?.price,
             quantity: 1,
-            Name: item?.name
+            Name: item?.name,
+            categoryName: item?.categoryName,
+            isDiscount: item?.isDiscount,
+            productId: item?.productId,
         };
         dispatch(addToCart(counterCartState));
     };

@@ -15,7 +15,7 @@ const Card: React.FC<cardProps> = ({ imgSrc, label, id }) => {
     return (
         <motion.div
             id={id}
-            className="cursor-pointer group h-[24em] w-[13em] border border-gray-300 border-t-0 rounded-3xl overflow-hidden flex flex-col py-8 hover:bg-[#006fcc]"
+            className="shadow-md cursor-pointer group h-[24em] w-[13em] border border-gray-300 border-t-0 rounded-3xl overflow-hidden flex flex-col py-8 hover:bg-[#006fcc]"
             whileHover={{
                 scale: 1.1,
                 transition: { duration: 0.2 },

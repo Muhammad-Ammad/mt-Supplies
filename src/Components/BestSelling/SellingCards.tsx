@@ -12,9 +12,13 @@ interface imgSrc {
     specialText: string,
     isSpecial: boolean,
     paragraph: string,
+    categoryName: string,
+    isDiscount: boolean,
+    productId: number
 }
 
-const SellingCards: React.FC<imgSrc> = ({ imgSrc, specialText, isSpecial, paragraph, price, id, name }) => {
+
+const SellingCards: React.FC<imgSrc> = ({ imgSrc, specialText, isSpecial, paragraph, price, id, name, categoryName, isDiscount, productId }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -27,7 +31,10 @@ const SellingCards: React.FC<imgSrc> = ({ imgSrc, specialText, isSpecial, paragr
             paragraph: paragraph,
             price: price,
             quantity: 1,
-            Name: name
+            Name: name,
+            categoryName: categoryName,
+            isDiscount: isDiscount,
+            productId: productId,
         };
         dispatch(setProductDetail(counterCartState));
         // dispatch(removeProductDetail());
@@ -50,9 +57,9 @@ const SellingCards: React.FC<imgSrc> = ({ imgSrc, specialText, isSpecial, paragr
         // dispatch(resetCart());
     };
     return (
-        <div id={id} className="mt-4 cursor-pointer">
+        <div id={id} className="mt-4 cursor-pointer hover:bg-softColor">
             <div className="relative">
-                <img src={imgSrc} alt="product5" onClick={() => handleClick()} />
+                <img src={imgSrc} alt="product5" className='object-cover rounded-md' onClick={() => handleClick()} />
                 <motion.div whileTap={{ scale: 0.9 }} className="absolute top-0 left-40 ml-8"><img src={WishlistHeart} alt="" /> </motion.div>
                 <motion.div whileTap={{ scale: 0.9 }} className="absolute bottom-2 left-40 ml-10" onClick={() => handleCartCounter()} ><img src={whitebluebordercart} alt="" /></motion.div>
             </div>

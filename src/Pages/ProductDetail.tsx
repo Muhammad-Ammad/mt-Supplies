@@ -1,10 +1,5 @@
 import Header from '../Components/Header/Header'
 import Footer from '../Components/Footer/Footer'
-import product1 from '../assets/bestSellingproducts/product1.png';
-import product2 from '../assets/bestSellingproducts/product2.png';
-import product3 from '../assets/bestSellingproducts/product3.png';
-import product4 from '../assets/bestSellingproducts/product4.png';
-import product5 from '../assets/bestSellingproducts/product5.png';
 import BreadCrumb from '../Components/Global/BreadCrumb';
 import Collapse from '../Components/Global/Collapse';
 import SellingCards from '../Components/BestSelling/SellingCards';
@@ -13,73 +8,265 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../store';
 import { addToCart, Product } from '../redux/mtSupplies';
 import { motion } from 'framer-motion';
-import pencil from "../assets/pencil.webp";
+import {
+    Brush1,
+    Brush2,
+    Brush3,
+    Brush4,
+    Brush5,
+    product1,
+    product2,
+    product3,
+    product4,
+    product5,
+}
+    from '../assets/index';
+import { Product as ProductInterface } from '../redux/mtSupplies';
+import { Button } from '@material-tailwind/react';
+
+const bestSelling = [
+    {
+        id: '1',
+        imgSrc: product1,
+        specialText: 'Special',
+        isSpecial: true,
+        paragraph: 'Brand Name - Product name, its specifications and all other details of it',
+        price: '7.66',
+        name: 'Brand Name',
+    },
+    {
+        id: '2',
+        imgSrc: product2,
+        specialText: '',
+        isSpecial: false,
+        paragraph: 'Brand Name - Product name, its specifications and all other details of it',
+        price: '7.66',
+        name: 'Brand Name',
+    },
+    {
+        id: '3',
+        imgSrc: product3,
+        specialText: '',
+        isSpecial: false,
+        paragraph: 'Brand Name - Product name, its specifications and all other details of it',
+        price: '7.66',
+        name: 'Brand Name',
+    },
+    {
+        id: '4',
+        imgSrc: product4,
+        specialText: '',
+        isSpecial: false,
+        paragraph: 'Brand Name - Product name, its specifications and all other details of it',
+        price: '7.66',
+        name: 'Brand Name',
+    },
+    {
+        id: '5',
+        imgSrc: product5,
+        specialText: '',
+        isSpecial: false,
+        paragraph: 'Brand Name - Product name, its specifications and all other details of it',
+        price: '7.66',
+        name: 'Brand Name',
+    },
+];
+
+const initialData: ProductInterface[] = [
+    {
+        id: '1',
+        productId: 1,
+        imgSrc: product1,
+        specialText: 'Special',
+        isSpecial: true,
+        paragraph: 'Brand Name - Pencil, its specifications and all other details of it',
+        price: '1.12',
+        Name: 'Pencil',
+        quantity: 0,
+        isDiscount: false,
+        categoryName: 'Pencils'
+    },
+    {
+        id: '2',
+        productId: 2,
+        imgSrc: product2,
+        specialText: '',
+        isSpecial: false,
+        paragraph: 'Brand Name - Pen, its specifications and all other details of it',
+        price: '2.14',
+        Name: 'Pen',
+        quantity: 0,
+        isDiscount: false,
+        categoryName: 'Pens'
+    },
+    {
+        id: '3',
+        imgSrc: product3,
+        productId: 2,
+        specialText: '',
+        isSpecial: false,
+        paragraph: 'Brand Name - Pen, its specifications and all other details of it',
+        price: '3.16',
+        Name: 'Pen',
+        quantity: 0,
+        isDiscount: false,
+        categoryName: 'Pens'
+    },
+    {
+        id: '4',
+        productId: 2,
+        imgSrc: product4,
+        specialText: '',
+        isSpecial: false,
+        paragraph: 'Brand Name - Pen, its specifications and all other details of it',
+        price: '4.22',
+        Name: 'Pen',
+        quantity: 0,
+        isDiscount: false,
+        categoryName: 'Pens'
+    },
+    {
+        id: '5',
+        productId: 1,
+        imgSrc: product5,
+        specialText: '',
+        isSpecial: false,
+        paragraph: 'Brand Name - Pencil, its specifications and all other details of it',
+        price: '5.24',
+        Name: 'Pencil',
+        quantity: 0,
+        isDiscount: false,
+        categoryName: 'Pencils'
+    },
+    {
+        id: '6',
+        productId: 1,
+        imgSrc: product1,
+        specialText: '',
+        isSpecial: false,
+        paragraph: 'Brand Name - Pencil, its specifications and all other details of it',
+        price: '6.26',
+        Name: 'Pencil',
+        quantity: 0,
+        isDiscount: false,
+        categoryName: 'Pencils'
+    },
+    {
+        id: '7',
+        productId: 2,
+        imgSrc: product2,
+        specialText: 'Special',
+        isSpecial: true,
+        paragraph: 'Brand Name - Pen, its specifications and all other details of it',
+        price: '7.32',
+        Name: 'Pen',
+        quantity: 0,
+        isDiscount: false,
+        categoryName: 'Pens'
+    },
+    {
+        id: '8',
+        productId: 3,
+        imgSrc: Brush1,
+        specialText: '',
+        isSpecial: false,
+        paragraph: 'Brand Name - Brush, its specifications and all other details of it',
+        price: '8.34',
+        Name: 'Brush',
+        quantity: 0,
+        isDiscount: false,
+        categoryName: 'Brushes'
+    },
+    {
+        id: '9',
+        imgSrc: Brush2,
+        productId: 3,
+        specialText: '',
+        isSpecial: false,
+        paragraph: 'Brand Name - Brush, its specifications and all other details of it',
+        price: '9.36',
+        Name: 'Brush',
+        quantity: 0,
+        isDiscount: false,
+        categoryName: 'Brushes'
+    },
+    {
+        id: '10',
+        productId: 3,
+        imgSrc: Brush3,
+        specialText: 'Special',
+        isSpecial: true,
+        paragraph: 'Brand Name - Brush, its specifications and all other details of it',
+        price: '10.42',
+        Name: 'Brush',
+        quantity: 0,
+        isDiscount: false,
+        categoryName: 'Brushes'
+    },
+    {
+        id: '11',
+        productId: 3,
+        imgSrc: Brush4,
+        specialText: 'Special',
+        isSpecial: true,
+        paragraph: 'Brand Name - Brush, its specifications and all other details of it',
+        price: '11.44',
+        Name: 'Brush',
+        quantity: 0,
+        isDiscount: false,
+        categoryName: 'Brushes'
+    },
+    {
+        id: '12',
+        productId: 3,
+        imgSrc: Brush5,
+        specialText: 'Special',
+        isSpecial: true,
+        paragraph: 'Brand Name - Brush, its specifications and all other details of it',
+        price: '12.46',
+        Name: 'Brush',
+        quantity: 0,
+        isDiscount: false,
+        categoryName: 'Brushes'
+    },
+    {
+        id: '13',
+        imgSrc: Brush4,
+        productId: 3,
+        specialText: 'Special',
+        isSpecial: true,
+        paragraph: 'Brand Name - Brush, its specifications and all other details of it',
+        price: '13.52',
+        Name: 'Brush',
+        quantity: 0,
+        isDiscount: false,
+        categoryName: 'Brushes'
+    },
+];
 
 const ProductDetail = () => {
     const { productDetails } = useSelector((state: RootState) => state.mtSupplies);
     const [form, setForm] = useState<Product[]>([]);
-    const dispatch = useDispatch<AppDispatch>()
+    const dispatch = useDispatch<AppDispatch>();
+    const [relatedSearchData, setRelatedSearchData] = useState<Product[]>(initialData);
+
     useEffect(() => {
         window.scrollTo(0, 0);
-        if (form.length === 0) {
-            const products = [...productDetails]; // Create a copy to avoid direct mutation or created a shallow copy
-            if (products.length > 0) {
-                const splitArray = products[0].paragraph?.split(',') || [];
-                if (splitArray.length > 1 && !splitArray[1].includes('<br />')) {
-                    products[0] = { ...products[0], paragraph: `${splitArray[0]}, <br />${splitArray[1]}` }
-                }
-            }
-            setForm(products);
-        }
-    }, []);
+        // if (form.length === 0) {
+        const products = [...productDetails];
+        if (products.length > 0) {
+            const splitArray = products[0].paragraph?.split(',') || [];
+            if (splitArray.length > 1 && !splitArray[1].includes('<br />')) {
+                products[0] = { ...products[0], paragraph: `${splitArray[0]}, <br />${splitArray[1]}` }
+            };
+        };
+        const filteredData = initialData.filter(item => item?.categoryName?.toLowerCase() === products[0]?.categoryName?.toLowerCase() && item?.id !== products[0]?.id);
+        setRelatedSearchData(filteredData);
+        setForm(products);
+        // }
+    }, [productDetails]);
 
-    const bestSelling = [
-        {
-            id: '1',
-            imgSrc: product1,
-            specialText: 'Special',
-            isSpecial: true,
-            paragraph: 'Brand Name - Product name, its specifications and all other details of it',
-            price: '7.66',
-            name: 'Brand Name',
-        },
-        {
-            id: '2',
-            imgSrc: product2,
-            specialText: '',
-            isSpecial: false,
-            paragraph: 'Brand Name - Product name, its specifications and all other details of it',
-            price: '7.66',
-            name: 'Brand Name',
-        },
-        {
-            id: '3',
-            imgSrc: product3,
-            specialText: '',
-            isSpecial: false,
-            paragraph: 'Brand Name - Product name, its specifications and all other details of it',
-            price: '7.66',
-            name: 'Brand Name',
-        },
-        {
-            id: '4',
-            imgSrc: product4,
-            specialText: '',
-            isSpecial: false,
-            paragraph: 'Brand Name - Product name, its specifications and all other details of it',
-            price: '7.66',
-            name: 'Brand Name',
-        },
-        {
-            id: '5',
-            imgSrc: product5,
-            specialText: '',
-            isSpecial: false,
-            paragraph: 'Brand Name - Product name, its specifications and all other details of it',
-            price: '7.66',
-            name: 'Brand Name',
-        },
-    ];
+
     const handleAddCart = () => {
         const payload = { ...form[0] }
         dispatch(addToCart(payload));
@@ -111,8 +298,8 @@ const ProductDetail = () => {
                     <div className="w-full md:w-1/2 flex justify-center items-center">
                         <div className="bg-white flex items-center justify-center flex-wrap overflow-hidden w-full">
                             <img
-                                // src={form && form[0]?.imgSrc}
-                                src={pencil}
+                                src={form && form[0]?.imgSrc}
+                                // src={pencil}
                                 alt="Product1"
                                 className="object-contain max-w-full h-[30rem]"
                             />
@@ -162,14 +349,15 @@ const ProductDetail = () => {
                             >
                                 +
                             </button>
-                            <motion.button
-                                whileTap={{ scale: 0.9 }}
+                            <Button
+                                className="bg-gradient-to-r from-[#0082E7] to-[#0053A5] p-3 md:px-8 font-medium rounded-xl text-gray-200 hover:text-white"
+                                placeholder={undefined}
+                                onPointerEnterCapture={undefined}
+                                onPointerLeaveCapture={undefined}
                                 onClick={() => handleAddCart()}
-                                className="bg-gradient-to-r from-[#0082E7] to-[#0053A5] py-2 px-6 md:px-8 font-medium rounded-xl text-gray-200 hover:text-white duration-300 hover:from-[#0053A5] hover:to-[#003B7A] active:bg-violet-700 focus:outline-none focus:ring focus:ring-blue-300"
-                                type="button"
                             >
                                 Add to Cart
-                            </motion.button>
+                            </Button>
                         </div>
                         <div className="mt-8">
                             <label className="text-base md:text-lg font-medium">
@@ -261,8 +449,8 @@ const ProductDetail = () => {
                         </div>
                     </div>
                     <div className="mt-10 flex snap-x overflow-x-auto scroll-smooth space-x-4">
-                        {bestSelling &&
-                            bestSelling.map((item, index) => (
+                        {relatedSearchData &&
+                            relatedSearchData.map((item, index) => (
                                 <div
                                     key={index}
                                     className="snap-start flex-shrink-0 w-80"
@@ -275,8 +463,10 @@ const ProductDetail = () => {
                                         isSpecial={item.isSpecial}
                                         paragraph={item.paragraph}
                                         price={item.price}
-                                        name={item.name}
-                                    />
+                                        name={item.Name}
+                                        categoryName={item?.categoryName}
+                                        isDiscount={item?.isDiscount}
+                                        productId={item?.productId} />
                                 </div>
                             ))}
                     </div>

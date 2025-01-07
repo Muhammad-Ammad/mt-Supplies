@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+// import { Link } from "react-router";
 import { LineChart, Line, ResponsiveContainer, Tooltip } from 'recharts';
 type Props = {
     color: string;
@@ -17,7 +17,7 @@ const ChartBox = (props: Props) => {
                     <span>{props?.title}</span>
                 </div>
                 <div className="xl:text-4xl lg:text-xl md:text-xl font-semibold" >{props?.number}</div>
-                <Link to={"/"} style={{ color: props?.color }}>View all</Link>
+                {/* <Link to={"/"} style={{ color: props?.color }}>View all</Link> */}
             </div>
             <div className="chartInfo flex flex-col basis-2/5 justify-between">
                 <div className="chart h-full w-full">

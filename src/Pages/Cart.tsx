@@ -136,11 +136,15 @@ const Cart = () => {
                                 Your Shopping cart lives to serve. Give it purpose.
                             </p>
                             {/* <Link to="/shop"> */}
-                            <button
+                            <Button
                                 onClick={() => handleNavigation()}
-                                className="bg-gradient-to-r from-[#0082E7] to-[#0053A5] rounded-md cursor-pointer hover:bg-black active:bg-gray-900 px-8 py-2 font-titleFont font-semibold text-lg text-gray-200 hover:text-white duration-300">
+                                className="bg-gradient-to-r from-[#0082E7] to-[#0053A5] rounded-md cursor-pointer hover:bg-black active:bg-gray-900 px-8 py-2 font-titleFont font-semibold text-lg text-gray-200 hover:text-white duration-300"
+                                placeholder={undefined}
+                                onPointerEnterCapture={undefined}
+                                onPointerLeaveCapture={undefined}
+                            >
                                 Continue Shopping
-                            </button>
+                            </Button>
                             {/* </Link> */}
                         </div>
                     </motion.div>

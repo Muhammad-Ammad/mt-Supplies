@@ -19,7 +19,7 @@ export const menu = [
       {
         id: 2,
         title: "Profile",
-        url: "/adminUser/1",
+        url: "/user/1",
         icon: <GoPerson />,
       },
     ],
@@ -31,27 +31,27 @@ export const menu = [
       {
         id: 1,
         title: "Users",
-        url: "/adminUser",
+        url: "/user",
         icon: <GoPerson />,
       },
       {
         id: 2,
         title: "Products",
-        url: "/adminProduct",
+        url: "/product",
         icon: <MdProductionQuantityLimits />,
       },
-      {
-        id: 3,
-        title: "Orders",
-        url: "/orders",
-        icon: <MdOutlineFavoriteBorder />,
-      },
-      {
-        id: 4,
-        title: "Posts",
-        url: "/posts",
-        icon: <BsFillSignpost2Fill />,
-      },
+      // {
+      //   id: 3,
+      //   title: "Orders",
+      //   url: "/orders",
+      //   icon: <MdOutlineFavoriteBorder />,
+      // },
+      // {
+      //   id: 4,
+      //   title: "Posts",
+      //   url: "/posts",
+      //   icon: <BsFillSignpost2Fill />,
+      // },
     ],
   },
   // {
@@ -561,8 +561,6 @@ export const products = [
     inStock: true,
   },
 ];
-
-
 
 export const singleUser = {
   id: 1,

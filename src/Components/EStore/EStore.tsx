@@ -283,12 +283,16 @@ const Product = () => {
     };
 
     const handleFilter = () => {
-        const productsData = [...globalData];
+        const productsData = [...initialData];
         const categoryData = [...category];
         const categoryIds = categoryData.filter(item => item.isChecked === true).map(item => item.id);
-
+        let filteredData: ProductInterface[] = [];
         const filterproductData = productsData.filter(item => categoryIds.includes(item.productId));
-        const filteredData = filterproductData.filter(item => Number(item.price) >= value[0] && Number(item.price) < value[1]);
+        if (filterproductData.length > 0) {
+            filteredData = filterproductData.filter(item => Number(item.price) >= value[0] && Number(item.price) < value[1]);
+        } else {
+            filteredData = initialData.filter(item => Number(item.price) >= value[0] && Number(item.price) < value[1]);
+        }
         setData(filteredData);
     };
 
@@ -396,6 +400,11 @@ const Product = () => {
                             </div>
                         </div>
                     ))}
+                    {globalData.length === 0 && (
+                        <div className="mt-4">
+                            No Products
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

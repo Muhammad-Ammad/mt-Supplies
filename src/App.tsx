@@ -23,7 +23,7 @@ import AdminProduct from "./Pages/AdminPanel/AdminProduct/AdminProduct";
 import AdminUserDetail from "./Pages/AdminPanel/adminUserDetail/AdminUserDetail";
 import AdminProductDetail from "./Pages/AdminPanel/adminProductDetail/AdminProductDetail";
 function App() {
-  const isAdmin = true;
+  const isAdmin = false;
   const Layout = () => {
     return (
       <div className="bg-mainBg text-mainColor min-h-screen flex flex-col overflow-x-hidden">
@@ -47,10 +47,10 @@ function App() {
         {isAdmin ? (
           <Route path="/" element={<Layout />} >
             <Route index element={<Admin />} ></Route>
-            <Route path="/adminUser" element={<AdminUser />} ></Route>
-            <Route path="/adminProduct" element={<AdminProduct />} ></Route>
-            <Route path="/adminUser/:id" element={<AdminUserDetail />} ></Route>
-            <Route path="/adminProduct/:id" element={<AdminProductDetail />} ></Route>
+            <Route path="/user" element={<AdminUser />} ></Route>
+            <Route path="/product" element={<AdminProduct />} ></Route>
+            <Route path="/user/:id" element={<AdminUserDetail />} ></Route>
+            <Route path="/product/:id" element={<AdminProductDetail />} ></Route>
           </Route>
         ) : (
           <Route>

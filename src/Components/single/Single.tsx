@@ -20,12 +20,12 @@ const Single = (props: Props) => {
           <div className="topInfo flex items-center gap-5">
             {props?.img && <img src={props?.img} alt="" className="w-[100px] h-[100px] rounded-[20px] object-cover" />}
             <h1 className="text-2xl font-semibold" >{props?.title}</h1>
-            <button>Update</button>
+            <button className="bg-softColor text-darkColor p-1 rounded-md font-medium" >Update</button>
           </div>
           <div className="details text-lg">
             {Object.entries(props?.info).map(item => (
               <div className="item my-[30px] mx-[0px]" key={item[0]}>
-                <span className="itemTitle font-semibold mr-[10px] capitalize">{item[0]}</span>
+                <span className="itemTitle font-semibold mr-[10px] capitalize">{item[0]}:</span>
                 <span className="itemValue">{item[1]}</span>
               </div>
             ))}
